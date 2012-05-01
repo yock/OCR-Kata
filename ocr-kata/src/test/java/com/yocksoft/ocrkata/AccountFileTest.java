@@ -7,19 +7,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class AccountFileTest {
-
+	
 	private AccountFile accountFile;
 
 	@Before
-	public void setup() {
-		accountFile = new AccountFile();
-		accountFile.setLocation("src/test/resources/in.txt");
+	public void setup() throws Exception {
+		accountFile = new AccountFile("src/test/resources/in.txt");
 	}
 
 	@Test
-	public void test() throws Exception {
+	public void testGetNext() throws Exception {
 		char[] account = accountFile.getNext();
-		assertThat(account.length, is(112));
+		assertThat(account.length, is(84));
+	}
+	
+	@Test
+	public void testHasNext() {
+		boolean hasNext = accountFile.hasNext();
+		assertThat(hasNext, is(true));
 	}
 
 }

@@ -3,32 +3,38 @@ package com.yocksoft.ocrkata;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.nio.CharBuffer;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class AccountFile {
-	public String location;
-	public Reader reader;
+	private String location;
+	private Deque<CharBuffer> accountChunks;
 
-	public void setLocation(String location) {
+	public AccountFile(String location) throws AccountFileException {
 		this.location = location;
-	}
-
-	private Reader readFile() throws IOException {
-		return reader == null ? new BufferedReader(new FileReader(location))
-				: reader;
+		this.accountChunks = new ArrayDeque<>();
+		init();
 	}
 
 	public char[] getNext() {
-		try (Reader reader = readFile()) {
+		return accountChunks.removeFirst().array();
+	}
+
+	public boolean hasNext() {
+		return accountChunks.size() > 0;
+	}
+	
+	private void init() throws AccountFileException {
+		try (BufferedReader reader = new BufferedReader(new FileReader(location))) {
 			while (reader.ready()) {
-				CharBuffer cbuf = CharBuffer.allocate(28 * 4);
-				reader.read(cbuf);
-				return cbuf.array();
+				CharBuffer buf = CharBuffer.allocate(28 * 3);
+				reader.read(buf);
+				accountChunks.addLast(buf);
+				reader.skip(28L);
 			}
 		} catch (IOException e) {
-			System.err.println("Error reading file.");
+			throw new AccountFileException();
 		}
-		return null;
 	}
 }
