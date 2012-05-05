@@ -1,4 +1,4 @@
-package com.yocksoft.ocrkata;
+package com.yocksoft.ocrkata.parser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

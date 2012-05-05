@@ -3,6 +3,10 @@ package com.yocksoft.ocrkata;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.yocksoft.ocrkata.parser.AccountFile;
+import com.yocksoft.ocrkata.parser.AccountFileException;
+import com.yocksoft.ocrkata.parser.AccountParser;
+
 public class AccountManager {
 
 	private List<Account> accounts;

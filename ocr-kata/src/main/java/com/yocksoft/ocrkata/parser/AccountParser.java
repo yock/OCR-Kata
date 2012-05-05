@@ -1,8 +1,10 @@
-package com.yocksoft.ocrkata;
+package com.yocksoft.ocrkata.parser;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.yocksoft.ocrkata.Account;
 
 public class AccountParser {
 

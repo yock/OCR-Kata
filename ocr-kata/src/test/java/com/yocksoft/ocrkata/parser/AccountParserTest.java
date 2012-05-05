@@ -1,10 +1,13 @@
-package com.yocksoft.ocrkata;
+package com.yocksoft.ocrkata.parser;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.yocksoft.ocrkata.Account;
+import com.yocksoft.ocrkata.parser.AccountParser;
 
 public class AccountParserTest {
 
