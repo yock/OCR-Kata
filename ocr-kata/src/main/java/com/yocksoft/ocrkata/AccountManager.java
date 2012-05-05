@@ -6,11 +6,13 @@ import java.util.List;
 import com.yocksoft.ocrkata.parser.AccountFile;
 import com.yocksoft.ocrkata.parser.AccountFileException;
 import com.yocksoft.ocrkata.parser.AccountParser;
+import com.yocksoft.ocrkata.validation.AccountValidator;
 
 public class AccountManager {
 
 	private List<Account> accounts;
 	private AccountParser accountParser = new AccountParser();
+	private AccountValidator accountValidator = new AccountValidator();
 
 	public void setAccountParser(AccountParser accountParser) {
 		this.accountParser = accountParser;
@@ -26,8 +28,8 @@ public class AccountManager {
 			while (accountFile.hasNext()) {
 				char[] accountChars = accountFile.getNext();
 				Account account = accountParser.parseAccount(accountChars);
+				accountValidator.isValid(account);
 				accounts.add(account);
-				System.out.println(account);
 			}
 		} catch (AccountFileException e) {
 			e.printStackTrace();

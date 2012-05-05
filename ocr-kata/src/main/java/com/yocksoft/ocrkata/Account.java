@@ -3,6 +3,7 @@ package com.yocksoft.ocrkata;
 public class Account {
 	
 	private String accountNumber;
+	private boolean valid;
 	
 	public Account(String accountNumber) {
 		this.accountNumber = accountNumber;
@@ -16,6 +17,14 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 	
+	public boolean isValid() {
+		return valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
