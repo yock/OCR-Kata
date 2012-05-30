@@ -18,8 +18,8 @@ public class AccountParserTest {
 	public void setup() {
 		accountParser = new AccountParser();
 		String strAccount = "    _  _     _  _  _  _  _ \n"
-				+ "  | _| _||_||_ |_   ||_||_|\n"
-				+ "  ||_  _|  | _||_|  ||_| _|\n";
+						  + "  | _| _||_||_ |_   ||_||_|\n"
+						  + "  ||_  _|  | _||_|  ||_| _|\n";
 		rawAccountData = strAccount.toCharArray();
 	}
 

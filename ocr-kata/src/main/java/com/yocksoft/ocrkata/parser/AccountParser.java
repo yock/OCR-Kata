@@ -35,21 +35,47 @@ public class AccountParser {
 			digit.append(entry[entryCoord]);
 		}
 
-		String digitKey = digit.toString().trim();
+		String digitKey = digit.toString();
 		return digitMap.get(digitKey);
 	}
 
 	private void init() {
 		Map<String, String> iMap = new HashMap<>();
-		iMap.put("|  |", "1");
-		iMap.put("_  _||_", "2");
-		iMap.put("_  _| _|", "3");
-		iMap.put("|_|  |", "4");
-		iMap.put("_ |_  _|", "5");
-		iMap.put("_ |_ |_|", "6");
-		iMap.put("_   |  |", "7");
-		iMap.put("_ |_||_|", "8");
-		iMap.put("_ |_| _|", "9");
+		iMap.put("   " +
+				 "  |" +
+				 "  |", "1");
+		
+		iMap.put(" _ " +
+				 " _|" +
+				 "|_ ", "2");
+		
+		iMap.put(" _ " +
+				 " _|" +
+				 " _|", "3");
+		
+		iMap.put("   " +
+				 "|_|" +
+				 "  |", "4");
+		
+		iMap.put(" _ " +
+				 "|_ " +
+				 " _|", "5");
+		
+		iMap.put(" _ " +
+				 "|_ " +
+				 "|_|", "6");
+		
+		iMap.put(" _ " +
+				 "  |" +
+				 "  |", "7");
+		
+		iMap.put(" _ " +
+				 "|_|" +
+				 "|_|", "8");
+		
+		iMap.put(" _ " +
+				 "|_|" +
+				 " _|", "9");
 		digitMap = Collections.unmodifiableMap(iMap);
 	}
 	
